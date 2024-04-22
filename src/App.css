@@ -1,11 +1,41 @@
-.main {
-    margin:20px
+/* CSSファイルの先頭に@import文を配置 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
+/* メディアクエリ内でフォントを指定 */
+.all {
+    width: auto;
+}
+
+.header {
+    border-bottom: 5px solid #ff8c00;
+}
+
+.main1{
+    text-align: center;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.time {
+    padding: 30px 20px 0px 20px;
+}
+
+.fee {
+    margin: 5px;
+    padding: 10px 30px 30px 30px;
+    border: 2px solid #a9a9a9;
+    line-height: 100px;
+    background-color: #ffdab9;
+}
+
+.goukei {
+    font-size: 50%;
+}
+
+.button {
+    margin-left: 20px;
 }
 
 
-.Typography {
-    background-color: rgb(5, 5, 88);
-    margin: 10px;
-}
 
 

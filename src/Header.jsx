@@ -14,7 +14,7 @@ const header = () => {
         <container maxWidth="md">
           <Box sx={{bgcolor:"#ffa500", color:"white"}}  padding={2}>
             <Stack direction="row">
-              <Typography variant="h3" className="title" fontFamily="Noto Sans JP" fontWeight="fontWeightBold" paddingLeft={7}>料金確認</Typography>
+              <Typography variant="h3" className="title" fontFamily="Noto Sans JP" fontWeight="fontWeightBold" paddingLeft={7}>NPCパーキング</Typography>
             </Stack>
           </Box>
         </container>

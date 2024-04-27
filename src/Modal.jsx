@@ -4,17 +4,21 @@ import DirectionsCarFilledRoundedIcon from '@mui/icons-material/DirectionsCarFil
 import { Typography, Stack, Button, Grid, Box, Container } from '@mui/material';
 import './Modal.css'
 
-const Modal = () => {
+const Modal = ({fee, modalrun}) => {
+    
     const [modal, setModal] = useState(false);
 
     const toggleModal = () => {
         setModal(!modal)
+        modalrun()
     }
 
     if(modal) {
         document.body.classList.add('active-modl')
+        
     } else {
         document.body.classList.remove('active-modl')
+        
     }
 
     return (
@@ -36,7 +40,8 @@ const Modal = () => {
                     className="overlay">    
                     </div>
                     <div className="modal-content">
-                        <h2>hello</h2>
+                        <Typography variant="h2">ご利用ありがとうございました</Typography>
+                        <Typography variant="h2">料金は{fee}となります</Typography>
                         <Button
                         className='close-modal'
                         onClick={toggleModal}

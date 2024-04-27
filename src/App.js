@@ -1,8 +1,6 @@
-
-import useSWR from 'swr'
 import React, { useState, useEffect } from 'react';
-import Header from './Header';
-import Modal from './Modal';
+import Header from './Header.jsx';
+import Modal from './Modal.jsx';
 import { Typography, Stack, Button, Grid, Box, Container } from '@mui/material';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CurrencyYenIcon from '@mui/icons-material/CurrencyYen';
@@ -13,26 +11,42 @@ const App = () => {
   const [fee, setFee] = useState(0);
   const [count, setCount] = useState(0);
 
+  const modalrun = () => {
+    console.log("Function from App.js called from Modal.jsx");
+    clearInterval(timer);
+    setCount(0);
+  };
+
   
 
   Notification.requestPermission().then(function (result) {
     console.log(result);
   });
 
-  const notification = (fee) => {
+  const notification_increase = (fee) => {
     Notification.requestPermission();
     const notification = new Notification("料金が"+fee+"円となりました");
-  }
+  };
+
+  const max = () => {
+    Notification.requestPermission();
+    const notification = new Notification("最大料金700円になりました");
+  };
+
+  let timer;
   
   useEffect(() => {
     const timer = setInterval(() => {
-      if ((count-30) % 30 === 0 && count > 30) {
-        const newFee = fee + 150
+      if (fee == 700) {
+        max();
+      } else if ((count-30) % 30 === 0 && count > 30 && fee < 650) { 
+        const newFee = fee + 150;
         setFee(newFee);
       
-        notification(newFee);
+        notification_increase(newFee);
       }
       setCount(prevCount => prevCount + 1);
+      
     }, 1000); 
     return () => clearInterval(timer);
 
@@ -63,7 +77,7 @@ const App = () => {
           <Typography variant="h1" fontWeight={700}><span className='goukei'>合計</span>{fee}<span className='goukei'>円</span></Typography>              
           </Stack>
         
-        <Modal />
+        <Modal fee={fee} modalrun={modalrun}/>
       </Box>
     </div>
   );

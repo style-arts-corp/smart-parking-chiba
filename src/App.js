@@ -1,4 +1,6 @@
+import useSWR from 'swr';
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
 import Header from './Header.jsx';
 import Modal from './Modal.jsx';
 import { Typography, Stack, Button, Grid, Box, Container } from '@mui/material';
@@ -11,13 +13,6 @@ const App = () => {
   const [fee, setFee] = useState(0);
   const [count, setCount] = useState(0);
 
-  const modalrun = () => {
-    console.log("Function from App.js called from Modal.jsx");
-    clearInterval(timer);
-    setCount(0);
-  };
-
-  
 
   Notification.requestPermission().then(function (result) {
     console.log(result);
@@ -75,9 +70,8 @@ const App = () => {
             <Typography variant="h3" fontWeight={700}>料金</Typography>
           </Stack>  
           <Typography variant="h1" fontWeight={700}><span className='goukei'>合計</span>{fee}<span className='goukei'>円</span></Typography>              
-          </Stack>
-        
-        <Modal fee={fee} modalrun={modalrun}/>
+        </Stack>
+        <Modal fee={fee} />
       </Box>
     </div>
   );
